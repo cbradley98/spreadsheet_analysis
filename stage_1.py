@@ -1,15 +1,21 @@
 import csv
 
-monthly_sales = []
+parliament_rep = []
 
-with open('sales.csv', 'r') as csv_file:
+no_rep = 0
+
+with open('gender_inequality.csv', 'r') as csv_file:
     spreadsheet = csv.DictReader(csv_file)
     for row in spreadsheet:
-        sales = int(row['sales'])
-        monthly_sales.append(sales)
+        rep_string = row['Percent Representation in Parliament']
+        if rep_string == '..':
+            rep_string = '0'
+            no_rep = no_rep + 1
+        rep = float(rep_string)
+        parliament_rep.append(rep)
 
-total_sales = 0
-for month in monthly_sales:
-    total_sales = total_sales + month
+total_rep = sum(parliament_rep)
+average_rep = total_rep / len(parliament_rep)
 
-print('Total sales: {}'.format(total_sales))
+print('Average Percent Representation in Parliament {}'.format(average_rep))
+print('Number of countries without representation or data: {}'.format(no_rep))
