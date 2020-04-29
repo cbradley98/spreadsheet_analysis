@@ -18,4 +18,4 @@ total_rep = sum(parliament_rep)
 average_rep = total_rep / len(parliament_rep)
 
 print('Average Percent Representation in Parliament {}'.format(average_rep))
-print('Number of countries without representation or data: {}'.format(no_rep))
+print('Number of countries without data representation: {}'.format(no_rep))
